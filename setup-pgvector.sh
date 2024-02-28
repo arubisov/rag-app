@@ -10,6 +10,6 @@ pushd /tmp && git clone --branch v0.4.4 https://github.com/pgvector/pgvector.git
 # Activate pgvector and the database
 echo 'ray ALL=(ALL:ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/ray
 sudo service postgresql start
-# pragma: allowlist nextline secret
-sudo -u postgres psql -c "ALTER USER postgres with password 'postgres';"
+sudo su
+sudo -u postgres psql -c "ALTER USER postgres with password 'postgres';" # pragma: allowlist secret
 sudo -u postgres psql -c "CREATE EXTENSION vector;"
