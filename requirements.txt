@@ -3,8 +3,10 @@ beautifulsoup4
 rank-bm25
 fastapi
 langchain
+langchain-openai
 matplotlib
 openai
+pandas==2.1.4
 pre-commit
 python-dotenv
 ray
@@ -15,6 +17,7 @@ streamlit
 structlog
 typer
 tiktoken
+ipywidgets
 
 # Vector DB
 asyncpg

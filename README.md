@@ -26,9 +26,10 @@ In this guide, we will learn how to:
 We'll be using [OpenAI](https://platform.openai.com/docs/models/) to access ChatGPT models like `gpt-3.5-turbo`, `gpt-4`, etc. and [Anyscale Endpoints](https://endpoints.anyscale.com/) to access OSS LLMs like `Llama-2-70b`. Be sure to create your accounts for both and have your credentials ready.
 
 ### Compute
+
 <details>
-  <summary>Local</summary>
-  You could run this on your local laptop but a we highly recommend using a setup with access to GPUs. You can set this up on your own or on [Anyscale](http://anyscale.com/).
+  <summary>GitHub Codespaces</summary>
+  Used for initial development and configuration.
 </details>
 
 <details open>
@@ -41,13 +42,6 @@ We'll be using [OpenAI](https://platform.openai.com/docs/models/) to access Chat
 
 </details>
 
-### Repository
-```bash
-git clone https://github.com/ray-project/llm-applications.git .
-git config --global user.name <GITHUB-USERNAME>
-git config --global user.email <EMAIL-ADDRESS>
-```
-
 ### Data
 Our data is already ready at `/efs/shared_storage/goku/docs.ray.io/en/master/` (on Staging, `us-east-1`) but if you wanted to load it yourself, run this bash command (change `/desired/output/directory`, but make sure it's on the shared storage,
 so that it's accessible to the workers)
@@ -56,13 +50,12 @@ git clone https://github.com/ray-project/llm-applications.git .
 ```
 
 ### Environment
-
 Then set up the environment correctly by specifying the values in your `.env` file,
 and installing the dependencies:
 
 ```bash
 pip install --user -r requirements.txt
-export PYTHONPATH=$PYTHONPATH:$PWD
+export PATH=$(python -m site --user-site)/bin:$PATH
 pre-commit install
 pre-commit autoupdate
 ```
@@ -78,10 +71,9 @@ ANYSCALE_API_KEY=""  # https://app.endpoints.anyscale.com/credentials
 DB_CONNECTION_STRING="dbname=postgres user=postgres host=localhost password=postgres"
 source .env
 ```
-
 Now we're ready to go through the [rag.ipynb](notebooks/rag.ipynb) interactive notebook to develop and serve our LLM application!
 
-### Learn more
-- If your team is investing heavily in developing LLM applications, [reach out](mailto:endpoints-help@anyscale.com) to us to learn more about how [Ray](https://github.com/ray-project/ray) and [Anyscale](http://anyscale.com/) can help you scale and productionize everything.
-- Start serving (+fine-tuning) OSS LLMs with [Anyscale Endpoints](https://endpoints.anyscale.com/) ($1/M tokens for `Llama-2-70b`) and private endpoints available upon request (1M free tokens trial).
-- Learn more about how companies like OpenAI, Netflix, Pinterest, Verizon, Instacart and others leverage Ray and Anyscale for their AI workloads at the [Ray Summit 2023](https://raysummit.anyscale.com/) this Sept 18-20 in San Francisco.
+### Learnings along the way
+
+- Forked from https://github.com/ray-project/llm-applications.git
+- Registered for Anyscale Endpoints which gave $10 free for usage
